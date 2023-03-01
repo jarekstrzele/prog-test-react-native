@@ -15,6 +15,7 @@ function MealsOverviewScreen(props){
         props.navigation.setOptions({
             title: categoryTitle
         });
+        console.log(categoryTitle)
 
         props.navigation.setOptions({
             title: categoryTitle
@@ -24,11 +25,12 @@ function MealsOverviewScreen(props){
 
     function renderMealItem(itemData){
         const mealItemProps = {
+            id: itemData.item.id,
             title: itemData.item.title,
             imageUrl: itemData.item.imageUrl,
             affordability: itemData.item.affordability,
             complexity: itemData.item.complexity,
-            duration: itemData.item.duration
+            duration: itemData.item.duration,
         }
         return  <MealItem {...mealItemProps}   />
     }
