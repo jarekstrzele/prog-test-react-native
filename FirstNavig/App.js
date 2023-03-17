@@ -37,9 +37,17 @@ function DrawerNavigator(){
     <Drawer.Screen name="Categories" component={CategoriesScreen}
         options={{
           title: 'All categories',
-          drawerIcon: ({color, size}) => <Ionicons color={"lightblue"} size={size} />
+          drawerIcon: ({color, size}) => <Ionicons name="list-circle" color={color} size={size} />
         }}/>
-    <Drawer.Screen name="Favorites" component={FavoriteScreen}/>
+    <Drawer.Screen name="Favorites" 
+          component={FavoriteScreen}
+          options={{
+            title: "My Favorite !!",
+            drawerIcon: ({color, size}) => (
+              <Ionicons name="star" color={color} size={size} />
+            )
+          }}
+          />
   </Drawer.Navigator>)
 }
 
