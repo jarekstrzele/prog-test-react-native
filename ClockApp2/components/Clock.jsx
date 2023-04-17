@@ -1,26 +1,53 @@
-import {Text, View} from 'react-native';
-import { useState } from 'react';
-
+import {Text, View, StyleSheet} from 'react-native';
+import { useState, useEffect } from 'react';
+import dayjs from "dayjs" ;
 
 function Clock(){
 
-    cont [time, setTime] = useState(new Date())
+    const [date, setDate] = useState(dayjs()) ;
 
-    const t = setInterval(() =>change_time(), 1000)
+    // useEffect( () => {
+    //     setInterval( () => {
+    //         setDate(dayjs()) ;
+    //     } , 1000*1) ;
+    // }, []) ;
+
+    useEffect( () => {
+        const interval = setInterval( () => {
+            setDate(dayjs()) ;
+        } , 1000*1) ;
+        return () => clearInterval(interval);
+    }, []) ;
 
 
-    function cleanup(){
-        clearInterval(t);
-    }
 
-
-    function change_time(){
-        setTime(new Date())
-    }
-
-    return (
-        <Text>Clock</Text>
+    return(
+    <View style={styles.container}>
+        <Text style={styles.date}>{date.format("dddd, DD MMMM")}</Text>
+        <Text style={styles.time}>{date.format("hh:mm:ss")}</Text>
+    </View>
     )
 }
 
 export default Clock;
+
+const styles = StyleSheet.create({
+    container:{
+       
+        backgroundColor: '#cab',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 5
+    },
+    data: {
+        fontSize: 30,
+        padding: 10,
+       
+    },
+
+    time: {
+
+        fontSize: 40,
+        padding: 10,
+    }
+})

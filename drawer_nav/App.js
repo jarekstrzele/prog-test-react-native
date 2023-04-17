@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native' ;
-// import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
@@ -9,7 +9,7 @@ import UserScreen from './screens/UserScreen';
 import 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons' ;
 
-// const Drawer = createDrawerNavigator() ;
+const Drawer = createDrawerNavigator() ;
 const BottomTab = createBottomTabNavigator();
 
 
@@ -31,6 +31,7 @@ export default function App() {
                       options={{
                     tabBarIcon: ({color, size}) => (<Ionicons name="person" color={color} size={size} />) ,
                  }}
+
                  
     />
     </BottomTab.Navigator>
